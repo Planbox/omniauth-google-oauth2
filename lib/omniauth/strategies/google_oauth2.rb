@@ -76,7 +76,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('https://www.googleapis.com/plus/v1/people/me/openIdConnect').parsed
+        @raw_info ||= access_token.get('https://www.googleapis.com/oauth2/v1/userinfo').parsed
       end
 
       def raw_friend_info(id)
@@ -112,7 +112,7 @@ module OmniAuth
       end
 
       def verified_email
-        raw_info['email_verified'] ? raw_info['email'] : nil
+        raw_info['verified_email'] ? raw_info['email'] : nil
       end
 
       def image_url
