@@ -56,7 +56,7 @@ module OmniAuth
       extra do
         hash = {}
         hash[:id_token] = access_token['id_token']
-        if !access_token['id_token'].nil?
+        if !options[:skip_jwt] && !access_token['id_token'].nil?
           hash[:id_info] = JWT.decode(
             access_token['id_token'], nil, false, {
               :verify_iss => true,
